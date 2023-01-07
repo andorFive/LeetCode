@@ -19,17 +19,16 @@ public class leetCode345 {
             //所有转换为小写字母
             char aByte =  Character.toLowerCase(bytes[former]);
             char bByte = Character.toLowerCase(bytes[tail]);
-            if ((aByte == 'a' || aByte == 'e' || aByte == 'i' || aByte == 'o' || aByte == 'u') &&
-                    (bByte == 'a' || bByte == 'e' || bByte == 'i' || bByte == 'o' || bByte == 'u')) {
+            if (isVowel(aByte) && isVowel(bByte)) {
                 temp = bytes[former];
                 bytes[former] = bytes[tail];
                 bytes[tail] = temp;
                 former++;
                 tail--;
-            } else if (aByte == 'a' || aByte == 'e' || aByte == 'i' || aByte == 'o' || aByte == 'u') {
+            } else if (isVowel(aByte)) {
                 //前指针找到元音字母
                 tail--;
-            } else if (bByte == 'a' || bByte == 'e' || bByte == 'i' || bByte == 'o' || bByte == 'u') {
+            } else if (isVowel(bByte)) {
                 //后指针找到元音字母
                 former++;
             } else {
@@ -40,5 +39,9 @@ public class leetCode345 {
         }
         System.out.println(String.valueOf(bytes));
         return String.valueOf(bytes);
+    }
+
+    public boolean isVowel(char c){
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
